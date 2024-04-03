@@ -1,0 +1,32 @@
+---
+import { getEntryBySlug, getCollection } from 'astro:content'
+import Layout from '@/layouts/Layout.astro'
+
+const manualDoctrinaPages = await getCollection('manual-doctrina')
+
+const entry = await getEntryBySlug('manual-doctrina', '00-portada')
+
+const { Content } = await entry.render()
+---
+
+<Layout
+	title=`${entry.data.title} | MIJES`
+	description=`${entry.data.description}`
+>
+	<div class="grid grid-cols-[auto_300px] mx-10">
+		<main class="">
+			<Content />
+		</main>
+		<aside class="bg-yellow-100 rounded-lg p-5">
+			<ol class="list-decimal list-inside">
+				{
+					manualDoctrinaPages.map((item) => (
+						<li>
+							<a href={`/manual-doctrina/${item.slug}`}>{item.data.title}</a>
+						</li>
+					))
+				}
+			</ol>
+		</aside>
+	</div>
+</Layout>

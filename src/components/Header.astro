@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+---
+<header class="py-4 px-6 bg-white bg-opacity-50 backdrop-blur-sm sticky top-0">
+	<nav class="flex justify-between text-xl items-center font-medium">
+        <a href="/">
+            <picture >
+                <source src="imgs/mijes-logo.webp" type="image/webp">
+                <source src="imgs/mijes-logo.png" type="image/avif">
+                <img class="aspect-square max-w-24" src="imgs/mijes-logo.avif" alt="MIJES Logo">
+            </picture>
+        </a>
+		<ul class="flex gap-6 ">
+			<li><a class="hover:underline" href="/manual-doctrina">Manual Doctrina</a></li>
+            <li><a class="hover:underline" href="/presentacion">Presentacion</a></li>
+		</ul>
+	</nav>
+</header>

@@ -1,0 +1,28 @@
+{
+  "name": "mijes",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/mdx": "^2.2.2",
+    "@astrojs/tailwind": "^5.1.0",
+    "@fontsource-variable/lora": "^5.0.17",
+    "@types/reveal.js": "^5.0.3",
+    "astro": "^4.5.12",
+    "reveal.js": "^5.0.5",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "standard": "^17.1.0"
+  }
+}

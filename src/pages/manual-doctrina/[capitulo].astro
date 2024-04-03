@@ -1,0 +1,126 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { getEntryBySlug, getCollection } from 'astro:content'
+
+export const getStaticPaths = async () => {
+	const manualDoctrinaPages = await getCollection('manual-doctrina')
+
+	const getPage = (currSlug: string, positio: number = 0) => {
+		const currentIndex = manualDoctrinaPages.findIndex(
+			(page) => page.slug === currSlug
+		)
+		if (currentIndex === 0 && positio < 0) return null
+		if (currentIndex === manualDoctrinaPages.length - 1 && positio > 0)
+			return null
+		const entry = manualDoctrinaPages[currentIndex + positio]
+		return { slug: entry.slug, title: entry.data.title }
+	}
+
+	const entries = manualDoctrinaPages.map((page, index) => {
+		const prevPage = getPage(page.slug, -1)
+		const nextPage = getPage(page.slug, 1)
+
+		return {
+			params: { capitulo: page.slug },
+			props: { entry: page, prevPage, nextPage },
+		}
+	})
+	return entries
+}
+
+const { entry, prevPage, nextPage } = Astro.props
+if (!entry) return Astro.redirect('/manual-doctrina/00-portada')
+const { Content } = await entry.render()
+---
+
+<Layout
+	title=`${entry.data.title} | Manual de Doctrina Basica | MIJES`
+	description=`${entry.data.description}`
+>
+	<section>
+		<header>
+			<nav>
+				<ul class="flex justify-between">
+					<li>
+						{
+							prevPage && (
+								<a href={`/manual-doctrina/${prevPage.slug}`}>
+									{' '}
+									&lt; {prevPage.title}
+								</a>
+							)
+						}
+					</li>
+					<li>
+						{
+							nextPage && (
+								<a href={`/manual-doctrina/${nextPage.slug}`}>
+									{' '}
+									{nextPage.title} &gt;
+								</a>
+							)
+						}
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<article>
+			<div class="max-w-[1200px] mx-auto px-5">
+				<Content />
+			</div>
+		</article>
+		<footer>
+			<nav>
+				<ul class="flex justify-between">
+					<li>
+						{
+							prevPage && (
+								<a href={`/manual-doctrina/${prevPage.slug}`}>
+									{' '}
+									&lt; {prevPage.title}
+								</a>
+							)
+						}
+					</li>
+					<li>
+						{
+							nextPage && (
+								<a href={`/manual-doctrina/${nextPage.slug}`}>
+									{' '}
+									{nextPage.title} &gt;
+								</a>
+							)
+						}
+					</li>
+				</ul>
+			</nav>
+		</footer>
+	</section>
+</Layout>
+
+<style is:global>
+	h1 {
+		font-size: 1.8rem;
+		font-weight: 600;
+	}
+	h2 {
+		font-size: 1.4rem;
+		margin-block: 1.3rem;
+		font-weight: 600;
+	}
+	h3 {
+		font-size: 1.2rem;
+		margin-block: 1.1rem;
+		font-weight: 500;
+	}
+	div > p {
+		line-height: 1.5;
+		font-size: 1.1rem;
+		margin-block: 0.7rem;
+	}
+
+	ol > li {
+		list-style-type: decimal;
+		margin-left: 1.5em;
+	}
+</style>
