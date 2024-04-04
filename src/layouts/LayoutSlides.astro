@@ -13,11 +13,6 @@ const { title, description } = Astro.props
 <!doctype html>
 <html lang="es">
 	<head>
-		<link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
-		<link
-			rel="stylesheet"
-			href="/node_modules/reveal.js/dist/theme/black.css"
-		/>
 		<meta name="description" content="{description}" />
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,12 +21,15 @@ const { title, description } = Astro.props
 	<body>
 		<slot />
 
-		<script is:inline src="/node_modules/reveal.js/dist/reveal.js"></script>
 		<script>
-			let deck = new window.Reveal()
+			import Reveal from 'reveal.js'
+            import 'reveal.js/dist/reveal.css'
+            import 'reveal.js/dist/theme/black.css'
+			let deck = new Reveal()
 			deck.initialize({
 				controls: true,
 			})
 		</script>
 	</body>
 </html>
+
