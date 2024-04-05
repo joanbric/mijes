@@ -8,23 +8,33 @@ interface Props {
 	description: string
 }
 const { title, description } = Astro.props
+
+
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<meta name="description" content="{description}" />
+		<meta name="description" content={description} />
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
-
+        <header class=`w-full fixed top-0 z-10`>
+            <nav class="flex justify-between py-4 px-6 bg-white bg-opacity-50 backdrop-blur-sm translate-y-[-100%] transition ease-in-out duration-300">
+                <ul><li><a href="/">Home</a></li></ul>
+            </nav>
+        </header>
+		<div class="reveal">
+			<div class="slides">
+				<slot />
+			</div>
+		</div>
 		<script>
 			import Reveal from 'reveal.js'
-            import 'reveal.js/dist/reveal.css'
-            import 'reveal.js/dist/theme/black.css'
+			import 'reveal.js/dist/reveal.css'
+			import 'reveal.js/dist/theme/black.css'
 			let deck = new Reveal()
 			deck.initialize({
 				controls: true,
@@ -33,3 +43,9 @@ const { title, description } = Astro.props
 	</body>
 </html>
 
+
+<style>
+    header:hover>nav{
+        transform: translate(0);
+    }
+</style>
