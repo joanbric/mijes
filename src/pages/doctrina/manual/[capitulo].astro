@@ -100,7 +100,7 @@ const { Content } = await entry.render()
 
 <style is:global>
 	h1 {
-		font-size: 1.8rem;
+		font-size: 4rem;
 		font-weight: 600;
 	}
 	h2 {
@@ -123,4 +123,24 @@ const { Content } = await entry.render()
 		list-style-type: decimal;
 		margin-left: 1.5em;
 	}
+
+    blockquote{
+        font-style: italic;
+        background-color: #fff6;
+        border:2px solid rgb(247, 247, 188);
+        padding: 3px
+    }
+    q{
+        font-style: italic;
+    }
+
+    a{
+        text-decoration: underline;
+    }
+    details{
+        font-size: 0.8rem;
+        padding: 5px 2px;
+        background-color: #fff9;
+        margin-block: 3px;
+    }
 </style>
