@@ -1,0 +1,53 @@
+---
+import InputText from './input_text.astro'
+---
+
+<h2>Ejercicios</h2>
+<p>Pon en pactica tu conocimiento de la Biblia.</p>
+
+<form class="pb-10">
+	<p><b>Hebreos 4: 12</b></p>
+	<p>
+		Porque la <InputText /> de <InputText /> es <InputText /> y <InputText />, y
+		más cortante que toda espada de dos filos; y penetra hasta partir el <InputText
+		/> y el <InputText />, las coyunturas y los tuétanos, y <InputText /> y las intenciones
+		del corazón.
+	</p>
+	<p><b>II Pedro 1:21</b></p>
+	<p>
+		Porque nunca la <InputText /> fue traída por voluntad humana si no que los
+		<InputText />
+		<InputText
+			oninput="this.style.width = ''.concat(this.value.length, 'ch')"
+		/> de Dios hablaron siendo inspirados por el Espíritu Santo
+	</p>
+	<h3>Selección múltiple</h3>
+	¿En que idiomas fue escrito la Biblia?
+	<ul>
+		<li><input type="checkbox" /> Arameo</li>
+		<li><input type="checkbox" /> Griego</li>
+		<li><input type="checkbox" /> Latin</li>
+		<li><input type="checkbox" /> Hebreo</li>
+		<li><input type="checkbox" /> Egipcio</li>
+	</ul>
+
+	<p>Cuantos libro tiene la Biblia?</p>
+	<ul>
+		<li><input type="checkbox" /> 84</li>
+		<li><input type="checkbox" /> 56</li>
+		<li><input type="checkbox" /> 66</li>
+		<li><input type="checkbox" /> 39</li>
+		<li><input type="checkbox" /> 63</li>
+	</ul>
+
+	<p>La palabra testamento significa:</p>
+	<ul>
+		<li><input type="checkbox" /> Herencia</li>
+		<li><input type="checkbox" /> Escrito</li>
+		<li><input type="checkbox" /> Pacto</li>
+		<li><input type="checkbox" /> Cuestionario</li>
+	</ul>
+    
+    <button class="bg-yellow-100 py-2 px-4 border rounded border-yellow-500">Evaluar respuestas</button>
+</form>
+

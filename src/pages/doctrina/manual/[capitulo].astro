@@ -28,8 +28,10 @@ export const getStaticPaths = async () => {
 	return entries
 }
 
+const BASE_PATH = '/doctrina/manual'
+
 const { entry, prevPage, nextPage } = Astro.props
-if (!entry) return Astro.redirect('/manual-doctrina/00-portada')
+if (!entry) return Astro.redirect(`${BASE_PATH}/00-portada`)
 const { Content } = await entry.render()
 ---
 
@@ -44,7 +46,7 @@ const { Content } = await entry.render()
 					<li>
 						{
 							prevPage && (
-								<a href={`/manual-doctrina/${prevPage.slug}`}>
+								<a href={`${BASE_PATH}/${prevPage.slug}`}>
 									{' '}
 									&lt; {prevPage.title}
 								</a>
@@ -54,7 +56,7 @@ const { Content } = await entry.render()
 					<li>
 						{
 							nextPage && (
-								<a href={`/manual-doctrina/${nextPage.slug}`}>
+								<a href={`${BASE_PATH}/${nextPage.slug}`}>
 									{' '}
 									{nextPage.title} &gt;
 								</a>
@@ -65,7 +67,7 @@ const { Content } = await entry.render()
 			</nav>
 		</header>
 		<article>
-			<div class="max-w-[1200px] mx-auto px-5">
+			<div class="max-w-[1000px] mx-auto px-5">
 				<Content />
 			</div>
 		</article>
@@ -75,7 +77,7 @@ const { Content } = await entry.render()
 					<li>
 						{
 							prevPage && (
-								<a href={`/manual-doctrina/${prevPage.slug}`}>
+								<a href={`${BASE_PATH}/${prevPage.slug}`}>
 									{' '}
 									&lt; {prevPage.title}
 								</a>
@@ -85,7 +87,7 @@ const { Content } = await entry.render()
 					<li>
 						{
 							nextPage && (
-								<a href={`/manual-doctrina/${nextPage.slug}`}>
+								<a href={`${BASE_PATH}/${nextPage.slug}`}>
 									{' '}
 									{nextPage.title} &gt;
 								</a>
@@ -99,17 +101,20 @@ const { Content } = await entry.render()
 </Layout>
 
 <style is:global>
+    body{
+        font-size: 1.2rem;
+    }
 	h1 {
 		font-size: 4rem;
 		font-weight: 600;
 	}
 	h2 {
-		font-size: 1.4rem;
+		font-size: 1.8rem;
 		margin-block: 1.3rem;
 		font-weight: 600;
 	}
 	h3 {
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 		margin-block: 1.1rem;
 		font-weight: 500;
 	}
@@ -125,10 +130,11 @@ const { Content } = await entry.render()
 	}
 
     blockquote{
-        font-style: italic;
+        /* font-style: italic; */
         background-color: #fff6;
         border:2px solid rgb(247, 247, 188);
-        padding: 3px
+        padding: 8px 10px;
+        border-radius: 6px;
     }
     q{
         font-style: italic;
